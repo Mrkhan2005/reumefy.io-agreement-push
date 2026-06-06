@@ -1,0 +1,184 @@
+@import "tailwindcss";
+
+@theme {
+  /* Font Family Customization */
+  --font-sans: "DM Sans", sans-serif;
+  --font-display: "Playfair Display", serif;
+
+  /* Custom Colors for Luxury Career-Tech theme */
+  --color-bg-primary: #0A0F1E;
+  --color-bg-card: #111827;
+  --color-bg-elevated: #1A2236;
+  --color-accent-gold: #D4AF37;
+  --color-accent-gold-light: #F0D060;
+  --color-text-primary: #F8F9FA;
+  --color-text-muted: #8B9BB4;
+  --color-success-green: #22C55E;
+  --color-gold-border: rgba(212, 175, 55, 0.2);
+
+  /* Animation Overrides */
+  --animate-gold-pulse: gold-pulse 2s infinite ease-in-out;
+  --animate-checkmark-draw: checkmark-draw 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  --animate-confetti-fall: confetti-fall 3s linear forwards;
+  --animate-shimmer: shimmer 3s infinite linear;
+  --animate-flow: border-flow 6s infinite linear;
+}
+
+/* Custom Animation Keyframes */
+@keyframes gold-pulse {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.15);
+    border-color: rgba(212, 175, 55, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(212, 175, 55, 0.4);
+    border-color: rgba(212, 175, 55, 0.6);
+  }
+}
+
+@keyframes border-flow {
+  0% { border-image-source: linear-gradient(90deg, #D4AF37, rgba(212, 175, 55, 0.2), #D4AF37); }
+  50% { border-image-source: linear-gradient(90deg, rgba(212, 175, 55, 0.2), #D4AF37, rgba(212, 175, 55, 0.2)); }
+  100% { border-image-source: linear-gradient(90deg, #D4AF37, rgba(212, 175, 55, 0.2), #D4AF37); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes checkmark-draw {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes confetti-fall {
+  0% {
+    transform: translateY(-20px) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Global resets & styling overrides */
+html, body {
+  background-color: #0A0F1E;
+  color: #F8F9FA;
+  font-family: "DM Sans", sans-serif;
+  scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Custom Premium Utilities */
+.font-display {
+  font-family: "Playfair Display", serif;
+}
+
+/* Glowing nav bar with high graphics backdrop blur */
+.nav-glow {
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5), 0 1px 20px rgba(212, 175, 55, 0.18);
+  border-bottom: 1.5px solid rgba(212, 175, 55, 0.35);
+  background: rgba(10, 15, 30, 0.82);
+  backdrop-filter: blur(24px) saturate(120%);
+  -webkit-backdrop-filter: blur(24px) saturate(120%);
+}
+
+.glass-panel {
+  background: rgba(17, 24, 39, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(212, 175, 55, 0.15);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.glass-panel-elevated {
+  background: rgba(26, 34, 54, 0.72);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(212, 175, 55, 0.28);
+  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.05);
+}
+
+.gold-glow-card {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid rgba(212, 175, 55, 0.12);
+}
+
+.gold-glow-card:hover {
+  transform: translateY(-5px) scale(1.01);
+  border-color: rgba(212, 175, 55, 0.45);
+  box-shadow: 0 20px 35px -8px rgba(0, 0, 0, 0.5), 0 0 20px rgba(212, 175, 55, 0.2);
+}
+
+.gold-glow-card-selected {
+  border-color: #D4AF37;
+  box-shadow: 0 0 30px rgba(212, 175, 55, 0.28), inset 0 0 15px rgba(212, 175, 55, 0.08);
+  background: rgba(26, 34, 54, 0.6);
+}
+
+.gold-text-gradient {
+  background: linear-gradient(135deg, #FFE890 0%, #D4AF37 50%, #A87F18 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gold-btn-gradient {
+  background: linear-gradient(135deg, #D4AF37 0%, #FFE890 50%, #B89020 100%);
+  background-size: 200% auto;
+  transition: background-position 0.4s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.gold-btn-gradient:hover:not(:disabled) {
+  background-position: right center;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.45);
+}
+
+.gold-btn-gradient:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+/* Futuristic grid overlay over motion video background */
+.grid-overlay {
+  background-image: 
+    linear-gradient(rgba(212, 175, 55, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(212, 175, 55, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-position: center;
+}
+
+/* Custom premium scrollbar for legal document */
+.legal-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.legal-scrollbar::-webkit-scrollbar-track {
+  background: rgba(10, 15, 30, 0.85);
+  border-radius: 4px;
+}
+
+.legal-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(212, 175, 55, 0.35);
+  border-radius: 4px;
+  border: 1px solid rgba(10, 15, 30, 0.85);
+}
+
+.legal-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(212, 175, 55, 0.55);
+}
+
+/* Reset root template styles */
+#root {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  border-inline: none;
+  min-height: 100vh;
+  display: block;
+}
