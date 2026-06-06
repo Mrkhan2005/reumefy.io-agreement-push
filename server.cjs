@@ -38,7 +38,7 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
 
-// Bind explicitly to 0.0.0.0 (required by shared hosting environments)
-app.listen(PORT, '0.0.0.0', () => {
+// Bind to the port/socket provided by the environment
+app.listen(PORT, () => {
   console.log(`Server is successfully running on port ${PORT}`);
 });
