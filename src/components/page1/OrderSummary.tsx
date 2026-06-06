@@ -6,7 +6,7 @@ import { ChevronUp, ChevronDown, ShoppingBag } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export const OrderSummary: React.FC = () => {
-  const { services, orderDetails } = useOrder();
+  const { services } = useOrder();
   const navigate = useNavigate();
   const [mobileExpanded, setMobileExpanded] = useState(false);
 
@@ -30,11 +30,7 @@ export const OrderSummary: React.FC = () => {
         <div className="flex justify-between text-text-muted border-b border-gold-border/5 pb-2">
           <div>
             <span className="font-semibold text-text-primary">ATS-Optimized Resume</span>
-            <span className="block text-[10px] text-success-green">Complimentary Offer</span>
-          </div>
-          <div className="text-right">
-            <span className="text-xs line-through mr-1.5">$150</span>
-            <span className="font-bold text-accent-gold-light">$0</span>
+            <span className="block text-[10px] text-success-green">Complimentary Add-on</span>
           </div>
         </div>
 
@@ -44,16 +40,10 @@ export const OrderSummary: React.FC = () => {
             <div>
               <span className="font-semibold">Assisted Job Applications</span>
               <span className="block text-xs text-text-muted">
-                {services.assistedJobApps.quantity} applications × $2
+                {services.assistedJobApps.quantity} applications
               </span>
-              {/* Initiation Fee Waived Detail */}
               <span className="block text-[10px] text-success-green font-medium">
-                Initiation Fee Waived ($100 savings)
-              </span>
-            </div>
-            <div className="text-right">
-              <span className="font-bold text-accent-gold">
-                ${services.assistedJobApps.quantity * 2}
+                Initiation Fee Waived
               </span>
             </div>
           </div>
@@ -64,10 +54,7 @@ export const OrderSummary: React.FC = () => {
           <div className="flex justify-between text-text-primary border-b border-gold-border/5 pb-2">
             <div>
               <span className="font-semibold">Career Consultation</span>
-              <span className="block text-xs text-text-muted">First 30 minutes free</span>
-            </div>
-            <div className="text-right">
-              <span className="font-bold text-accent-gold">$0</span>
+              <span className="block text-xs text-text-muted">Complimentary 30-min strategy session included</span>
             </div>
           </div>
         )}
@@ -77,11 +64,7 @@ export const OrderSummary: React.FC = () => {
           <div className="flex justify-between text-text-primary border-b border-gold-border/5 pb-2">
             <div>
               <span className="font-semibold">Interview Prep</span>
-              <span className="block text-[10px] text-accent-gold-light">Client Discount</span>
-            </div>
-            <div className="text-right">
-              <span className="text-xs line-through text-text-muted mr-1.5">$150</span>
-              <span className="font-bold text-accent-gold">$100</span>
+              <span className="block text-[10px] text-accent-gold-light">Active Package Selection</span>
             </div>
           </div>
         )}
@@ -91,11 +74,7 @@ export const OrderSummary: React.FC = () => {
           <div className="flex justify-between text-text-primary border-b border-gold-border/5 pb-2">
             <div>
               <span className="font-semibold">Profile Optimization</span>
-              <span className="block text-[10px] text-accent-gold-light">Client Discount</span>
-            </div>
-            <div className="text-right">
-              <span className="text-xs line-through text-text-muted mr-1.5">$120</span>
-              <span className="font-bold text-accent-gold">$60</span>
+              <span className="block text-[10px] text-accent-gold-light">Active Package Selection</span>
             </div>
           </div>
         )}
@@ -107,14 +86,6 @@ export const OrderSummary: React.FC = () => {
               <span className="font-semibold">Portfolio Creation</span>
               <span className="block text-xs text-text-muted">
                 Tier: {services.portfolioCreation.tier === 'pdf' ? 'Professional PDF' : 'Premium Web'}
-              </span>
-            </div>
-            <div className="text-right">
-              {services.portfolioCreation.tier === 'web' && (
-                <span className="text-xs line-through text-text-muted mr-1.5">$300</span>
-              )}
-              <span className="font-bold text-accent-gold">
-                ${services.portfolioCreation.tier === 'pdf' ? 50 : 200}
               </span>
             </div>
           </div>
@@ -129,12 +100,12 @@ export const OrderSummary: React.FC = () => {
       <div className="hidden md:block sticky top-28 glass-panel-elevated rounded-xl p-6 shadow-2xl border border-gold-border w-full max-w-sm">
         <h3 className="font-display text-xl font-bold tracking-tight text-text-primary border-b border-gold-border/20 pb-4 mb-4 flex items-center gap-2">
           <ShoppingBag size={18} className="text-accent-gold" />
-          Your Order Summary
+          Your Selected Services
         </h3>
 
         {!hasItems ? (
           <div className="py-12 text-center text-text-muted text-sm font-sans">
-            <p>Select premium career services from the left to build your custom package.</p>
+            <p>Select services from the left to add to your plan.</p>
           </div>
         ) : (
           <>
@@ -151,10 +122,10 @@ export const OrderSummary: React.FC = () => {
 
               <div className="flex justify-between items-baseline pt-2">
                 <span className="text-sm text-text-muted uppercase tracking-wider font-semibold">
-                  Total Due Today
+                  Selected Services
                 </span>
-                <span className="text-3xl font-extrabold text-accent-gold gold-text-gradient">
-                  ${orderDetails.totalDueToday}
+                <span className="text-2xl font-bold text-accent-gold">
+                  {Object.values(services).filter(s => s.selected).length + 1} Packages
                 </span>
               </div>
             </div>
@@ -204,15 +175,10 @@ export const OrderSummary: React.FC = () => {
               </div>
               <div>
                 <span className="text-[10px] text-text-muted uppercase tracking-widest font-bold">
-                  Total Today
+                  Selected Services
                 </span>
                 <div className="text-xl font-bold text-accent-gold flex items-center gap-1.5">
-                  ${orderDetails.totalDueToday}
-                  {hasItems && (
-                    <span className="text-[10px] text-text-muted lowercase font-normal">
-                      ({Object.values(services).filter(s => s.selected).length} selected)
-                    </span>
-                  )}
+                  {Object.values(services).filter(s => s.selected).length + 1} Items Active
                 </div>
               </div>
             </div>

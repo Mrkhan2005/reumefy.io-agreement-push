@@ -27,7 +27,6 @@ export const PortfolioTierSelector: React.FC<PortfolioTierSelectorProps> = ({
         >
           <div className="flex justify-between items-center mb-1">
             <span className="text-sm font-bold text-text-primary">Professional PDF</span>
-            <span className="text-sm font-extrabold text-accent-gold">$50</span>
           </div>
           <p className="text-[11px] text-text-muted leading-relaxed">
             Beautifully designed multi-page PDF portfolio. Print and digital ready.
@@ -49,7 +48,6 @@ export const PortfolioTierSelector: React.FC<PortfolioTierSelectorProps> = ({
         >
           <div className="flex justify-between items-center mb-1">
             <span className="text-sm font-bold text-text-primary">Premium Web</span>
-            <span className="text-sm font-extrabold text-accent-gold">$200</span>
           </div>
           <p className="text-[11px] text-text-muted leading-relaxed">
             Your own portfolio website, fully hosted for 1 year. Domain & hosting included.

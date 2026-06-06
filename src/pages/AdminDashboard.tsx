@@ -12,7 +12,6 @@ import {
   Copy, 
   Check, 
   FileText,
-  DollarSign,
   Users,
   Lock,
   LogOut,
@@ -34,17 +33,17 @@ export const AdminDashboard: React.FC = () => {
 
   // Load agreements, config, and session authorization status on mount
   useEffect(() => {
-    const savedAuth = sessionStorage.getItem('resumefy_admin_auth');
+    const savedAuth = sessionStorage.getItem('siddiquibro_admin_auth');
     if (savedAuth === 'true') {
       setIsAuthenticated(true);
     }
 
-    const savedAgreements = localStorage.getItem('resumefy_agreements');
+    const savedAgreements = localStorage.getItem('siddiquibro_agreements');
     if (savedAgreements) {
       setAgreements(JSON.parse(savedAgreements));
     }
 
-    const savedWebhook = localStorage.getItem('resumefy_gsheet_webhook');
+    const savedWebhook = localStorage.getItem('siddiquibro_gsheet_webhook');
     if (savedWebhook) {
       setWebhookUrl(savedWebhook);
     }
@@ -52,8 +51,8 @@ export const AdminDashboard: React.FC = () => {
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    if (passwordInput === 'ResumefyAdmin2026') {
-      sessionStorage.setItem('resumefy_admin_auth', 'true');
+    if (passwordInput === 'SiddiquiBroAdmin2026') {
+      sessionStorage.setItem('siddiquibro_admin_auth', 'true');
       setIsAuthenticated(true);
       setLoginError('');
     } else {
@@ -62,21 +61,21 @@ export const AdminDashboard: React.FC = () => {
   };
 
   const handleLogout = () => {
-    sessionStorage.removeItem('resumefy_admin_auth');
+    sessionStorage.removeItem('siddiquibro_admin_auth');
     setIsAuthenticated(false);
     setPasswordInput('');
   };
 
   const handleSaveWebhook = (e: React.FormEvent) => {
     e.preventDefault();
-    localStorage.setItem('resumefy_gsheet_webhook', webhookUrl);
+    localStorage.setItem('siddiquibro_gsheet_webhook', webhookUrl);
     setSettingsSaved(true);
     setTimeout(() => setSettingsSaved(false), 3000);
   };
 
   const handleClearAgreements = () => {
     if (window.confirm('Are you sure you want to clear all agreement database logs? This action is permanent.')) {
-      localStorage.removeItem('resumefy_agreements');
+      localStorage.removeItem('siddiquibro_agreements');
       setAgreements([]);
     }
   };
@@ -85,7 +84,7 @@ export const AdminDashboard: React.FC = () => {
     if (window.confirm('Delete this agreement record?')) {
       const updated = [...agreements];
       updated.splice(index, 1);
-      localStorage.setItem('resumefy_agreements', JSON.stringify(updated));
+      localStorage.setItem('siddiquibro_agreements', JSON.stringify(updated));
       setAgreements(updated);
     }
   };
@@ -122,7 +121,7 @@ export const AdminDashboard: React.FC = () => {
   const handleDownloadCSV = () => {
     if (agreements.length === 0) return;
     
-    const headers = ['Reference Number', 'Date Signed', 'Client Name', 'Client Email', 'Selected Services', 'Total Price (USD)', 'Signature Type'];
+    const headers = ['Reference Number', 'Date Signed', 'Client Name', 'Client Email', 'Selected Services', 'Signature Type'];
     
     const rows = agreements.map(item => [
       item.referenceNumber,
@@ -130,7 +129,6 @@ export const AdminDashboard: React.FC = () => {
       item.clientName,
       item.clientEmail,
       item.selectedServices.map(s => s.name).join('; '),
-      item.totalPrice,
       item.signatureType
     ]);
 
@@ -140,7 +138,7 @@ export const AdminDashboard: React.FC = () => {
     const encodedUri = encodeURI(csvContent);
     const link = document.createElement("a");
     link.setAttribute("href", encodedUri);
-    link.setAttribute("download", `Resumefy_Agreements_Master_${new Date().toISOString().split('T')[0]}.csv`);
+    link.setAttribute("download", `Siddiqui_Bro_LLC_Agreements_Master_${new Date().toISOString().split('T')[0]}.csv`);
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -156,11 +154,11 @@ export const AdminDashboard: React.FC = () => {
     doc.setTextColor(212, 175, 55);
     doc.setFont('times', 'bold');
     doc.setFontSize(26);
-    doc.text('RESUMEFY.IO', 20, 25);
+    doc.text('SIDDIQUI BRO LLC', 20, 25);
     doc.setTextColor(248, 249, 250);
     doc.setFont('times', 'normal');
     doc.setFontSize(12);
-    doc.text('Your Career, Professionally Elevated.', 20, 34);
+    doc.text('Corporate and Client Services.', 20, 34);
 
     doc.setTextColor(17, 24, 39);
     doc.setFont('times', 'bold');
@@ -185,24 +183,24 @@ export const AdminDashboard: React.FC = () => {
 
     doc.setFont('times', 'bold');
     doc.setFontSize(14);
-    doc.text('ITEMIZED ORDER DETAILS', 20, 128);
+    doc.text('SELECTED SERVICE DETAILS', 20, 128);
 
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(10);
-    doc.text('Service Item', 20, 136);
-    doc.text('Price (USD)', 160, 136);
+    doc.text('Selected Service Item', 20, 136);
+    doc.text('Status', 160, 136);
     doc.setDrawColor(212, 175, 55);
     doc.line(20, 138, 190, 138);
 
     let currentY = 145;
     doc.setFont('helvetica', 'normal');
-    doc.text('ATS-Optimized Resume (Complimentary)', 20, currentY);
-    doc.text('$0.00', 160, currentY);
+    doc.text('ATS-Optimized Resume', 20, currentY);
+    doc.text('Active (Complimentary)', 160, currentY);
     currentY += 8;
 
     item.selectedServices.forEach(s => {
       doc.text(`${s.name} ${s.details ? ' (' + s.details + ')' : ''}`, 20, currentY);
-      doc.text(`$${s.price}.00`, 160, currentY);
+      doc.text(`Active`, 160, currentY);
       currentY += 8;
     });
 
@@ -211,9 +209,9 @@ export const AdminDashboard: React.FC = () => {
     currentY += 8;
 
     doc.setFont('helvetica', 'bold');
-    doc.text('TOTAL DUE TODAY:', 20, currentY);
+    doc.text('SERVICE INITIATION STATUS:', 20, currentY);
     doc.setTextColor(212, 175, 55);
-    doc.text(`$${item.totalPrice}.00`, 160, currentY);
+    doc.text('Agreement Signed & Ready', 140, currentY);
     doc.setTextColor(17, 24, 39);
 
     currentY += 20;
@@ -237,7 +235,7 @@ export const AdminDashboard: React.FC = () => {
     doc.setTextColor(17, 24, 39);
     doc.setFontSize(10);
     doc.setFont('helvetica', 'bold');
-    doc.text('For Resumefy.io Team', 20, currentY);
+    doc.text('For Siddiqui Bro LLC Team', 20, currentY);
     doc.text('For Client (Digital Authorization)', 115, currentY);
 
     currentY += 5;
@@ -258,11 +256,10 @@ export const AdminDashboard: React.FC = () => {
       doc.text(item.signatureData, 120, currentY - 10);
     }
 
-    doc.save(`Resumefy_Agreement_${item.referenceNumber}.pdf`);
+    doc.save(`Siddiqui_Bro_LLC_Agreement_${item.referenceNumber}.pdf`);
   };
 
   // Calculations for stats
-  const totalPayout = agreements.reduce((acc, curr) => acc + curr.totalPrice, 0);
   const totalAppsCount = agreements.filter(item => item.selectedServices.some(s => s.name.includes('Job Applications'))).length;
 
   if (!isAuthenticated) {
@@ -353,7 +350,7 @@ export const AdminDashboard: React.FC = () => {
             </button>
           </div>
           <h2 className="font-display font-bold text-3xl sm:text-4xl text-text-primary tracking-tight">
-            Resumefy.io Agreement Database
+            Siddiqui Bro LLC Agreement Database
           </h2>
           <p className="text-sm text-text-muted max-w-md mx-auto">
             Manage signed legal agreements, configure real-time cloud spreadsheet webhooks, and audit customer data.
@@ -377,11 +374,11 @@ export const AdminDashboard: React.FC = () => {
 
           <div className="glass-panel rounded-xl p-5 flex items-center gap-4">
             <div className="p-3 bg-success-green/15 text-success-green rounded-lg">
-              <DollarSign size={24} />
+              <CheckCircle size={24} />
             </div>
             <div>
-              <span className="text-[10px] text-text-muted uppercase font-bold tracking-wider">Total Value Secured</span>
-              <p className="text-2xl font-black text-success-green mt-0.5">${totalPayout}</p>
+              <span className="text-[10px] text-text-muted uppercase font-bold tracking-wider">Agreements Executed</span>
+              <p className="text-2xl font-black text-success-green mt-0.5">{agreements.length} Signed</p>
             </div>
           </div>
 
@@ -532,7 +529,6 @@ export const AdminDashboard: React.FC = () => {
                         <th className="py-3 px-2">Ref Code</th>
                         <th className="py-3 px-2">Client Details</th>
                         <th className="py-3 px-2">Selected Packages</th>
-                        <th className="py-3 px-2 text-right">Price</th>
                         <th className="py-3 px-2 text-center">Actions</th>
                       </tr>
                     </thead>
@@ -560,11 +556,6 @@ export const AdminDashboard: React.FC = () => {
                                 • {s.name}
                               </span>
                             ))}
-                          </td>
-
-                          {/* Price */}
-                          <td className="py-4 px-2 text-right font-bold text-text-primary">
-                            ${item.totalPrice}
                           </td>
 
                           {/* Actions */}

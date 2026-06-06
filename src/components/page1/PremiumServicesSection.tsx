@@ -47,7 +47,7 @@ export const PremiumServicesSection: React.FC = () => {
           </h2>
         </div>
         <p className="text-sm text-text-muted">
-          Handpicked by our career experts. All prices shown reflect your exclusive client discount.
+          Handpicked by our career experts. Select the services you want to include in your customized plan.
         </p>
       </div>
 
@@ -62,7 +62,6 @@ export const PremiumServicesSection: React.FC = () => {
           <ServiceCard
             title="Assisted Job Applications"
             subtitle="Human-supervised. Accuracy-guaranteed."
-            priceText={`$2 / application`}
             isSelected={services.assistedJobApps.selected}
             onToggle={() => toggleService('assistedJobApps')}
             bullets={[
@@ -113,7 +112,7 @@ export const PremiumServicesSection: React.FC = () => {
                 <div className="p-3 rounded bg-success-green/10 border border-success-green/20 text-success-green flex items-center gap-2 text-xs">
                   <span>🎁</span>
                   <span className="font-semibold">
-                    Initiation fee waived — $100 discount applied automatically
+                    Initiation fee waived automatically for active packages
                   </span>
                 </div>
               )}
@@ -126,18 +125,17 @@ export const PremiumServicesSection: React.FC = () => {
           <ServiceCard
             title="Career Consultation"
             subtitle="One-on-one session with premium resume strategists."
-            priceText="First 30 min FREE"
             isSelected={services.careerConsultation.selected}
             onToggle={() => toggleService('careerConsultation')}
             bullets={[
               'Resume strategy, positioning, and narrative alignment',
               'Career path development and executive advisory',
               'Live salary negotiation mock coaching and tips',
-              'First 30 minutes always complimentary, $100/hr thereafter',
+              'First 30 minutes always complimentary, hourly consulting thereafter',
             ]}
           >
             <div className="text-xs text-text-muted font-sans italic leading-relaxed">
-              Note: Additional time is billed at $100 per hour (in 30-min increments) and will be invoiced post-session. First 30 min is always 100% free.
+              Note: Additional time is billed hourly (in 30-min increments) and will be invoiced post-session. First 30 min is always 100% free.
             </div>
           </ServiceCard>
         </motion.div>
@@ -147,9 +145,6 @@ export const PremiumServicesSection: React.FC = () => {
           <ServiceCard
             title="Interview Preparation"
             subtitle="Master behavioral and technical interviews."
-            priceText="$100"
-            originalPriceText="$150"
-            badgeText="Save $50"
             isSelected={services.interviewPrep.selected}
             onToggle={() => toggleService('interviewPrep')}
             bullets={[
@@ -166,9 +161,6 @@ export const PremiumServicesSection: React.FC = () => {
           <ServiceCard
             title="Professional Profile Optimization"
             subtitle="LinkedIn · Indeed · Glassdoor · ZipRecruiter · and more"
-            priceText="$60"
-            originalPriceText="$120"
-            badgeText="Save $60"
             isSelected={services.profileOptimization.selected}
             onToggle={() => toggleService('profileOptimization')}
             bullets={[
@@ -185,7 +177,6 @@ export const PremiumServicesSection: React.FC = () => {
           <ServiceCard
             title="Portfolio Creation"
             subtitle="Showcase your professional achievements visually."
-            priceText={services.portfolioCreation.tier === 'pdf' ? '$50' : '$200'}
             isSelected={services.portfolioCreation.selected}
             onToggle={() => toggleService('portfolioCreation')}
             bullets={[

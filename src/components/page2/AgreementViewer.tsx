@@ -38,7 +38,7 @@ export const AgreementViewer: React.FC<AgreementViewerProps> = ({
     <div className="space-y-4 font-sans">
       <div className="flex flex-col gap-1 border-b border-gold-border/20 pb-4 mb-4">
         <h3 className="font-display text-2xl font-bold text-text-primary tracking-tight">
-          Resumefy.io Client Services Agreement
+          Siddiqui Bro LLC Client Services Agreement
         </h3>
         <p className="text-xs font-semibold tracking-wider text-accent-gold uppercase">
           ✦ Governed by the laws of the State of Texas
@@ -51,12 +51,12 @@ export const AgreementViewer: React.FC<AgreementViewerProps> = ({
         className="h-[400px] overflow-y-auto p-6 rounded-lg bg-bg-primary border border-gold-border/20 text-xs text-text-muted leading-relaxed space-y-6 legal-scrollbar select-text"
       >
         <div className="text-center font-bold text-text-primary text-sm mb-4 tracking-widest uppercase font-display">
-          RESUMEFY.IO CLIENT SERVICES AGREEMENT
+          SIDDIQUI BRO LLC CLIENT SERVICES AGREEMENT
         </div>
 
         <p className="italic">
           This Client Services Agreement ("Agreement") is entered into as of the date of electronic 
-          acceptance between Resumefy.io ("Company") and the undersigned client ("Client").
+          acceptance between Siddiqui Bro LLC ("Company") and the undersigned client ("Client").
         </p>
 
         <div className="space-y-4">
@@ -64,29 +64,27 @@ export const AgreementViewer: React.FC<AgreementViewerProps> = ({
             <h4 className="font-bold text-text-primary mb-1 uppercase tracking-wide">1. SERVICES</h4>
             <p>
               The Company agrees to provide the career services selected by the Client on the preceding 
-              page, as itemized in the Order Summary incorporated herein by reference. Services are 
-              subject to the pricing, terms, and scope described at the time of selection.
+              page, as itemized in the Services Summary incorporated herein by reference. Services are 
+              subject to the terms and scope described at the time of selection.
             </p>
           </div>
 
           <div>
-            <h4 className="font-bold text-text-primary mb-1 uppercase tracking-wide">2. PAYMENT TERMS</h4>
+            <h4 className="font-bold text-text-primary mb-1 uppercase tracking-wide">2. SERVICE INITIATION</h4>
             <p>
-              Client agrees to pay all fees as shown in the Order Summary. Payment is due in full at the 
-              time of agreement execution unless a payment plan has been separately arranged in writing. 
-              All fees are in U.S. Dollars. Resumefy.io reserves the right to withhold deliverables until 
-              payment is confirmed.
+              Client agrees to all terms associated with the selected services. Services will begin 
+              upon agreement execution. Siddiqui Bro LLC reserves the right to withhold deliverables 
+              until all necessary client intake information is provided.
             </p>
           </div>
 
           <div>
             <h4 className="font-bold text-text-primary mb-1 uppercase tracking-wide">3. ASSISTED JOB APPLICATIONS</h4>
             <p>
-              Where the Client has selected Assisted Job Application services, a $100 initiation fee 
-              applies, which is hereby waived as a promotional discount at the Company's discretion. 
-              The Company will apply to jobs on behalf of the Client at the rate of $2 per application 
-              submitted. The Client is responsible for providing accurate job preferences, login credentials 
-              where required, and timely responses to employer inquiries.
+              Where the Client has selected Assisted Job Application services, any initiation fee is 
+              hereby waived. The Company will apply to jobs on behalf of the Client according to the 
+              selected volume. The Client is responsible for providing accurate job preferences, login 
+              credentials where required, and timely responses to employer inquiries.
             </p>
           </div>
 
@@ -94,8 +92,8 @@ export const AgreementViewer: React.FC<AgreementViewerProps> = ({
             <h4 className="font-bold text-text-primary mb-1 uppercase tracking-wide">4. CONSULTATION SERVICES</h4>
             <p>
               The first thirty (30) minutes of any career consultation session are provided complimentary. 
-              Additional time is billed at $100 per hour, in thirty (30) minute increments, and will be 
-              invoiced following the session.
+              Additional time is billed hourly, in thirty (30) minute increments, and will be invoiced 
+              following the session.
             </p>
           </div>
 
@@ -120,7 +118,7 @@ export const AgreementViewer: React.FC<AgreementViewerProps> = ({
             <h4 className="font-bold text-text-primary mb-1 uppercase tracking-wide">7. REFUND POLICY</h4>
             <p>
               Due to the digital and custom nature of career services, all sales are final. Refunds may 
-              be granted at the sole discretion of Resumefy.io in cases of documented non-delivery.
+              be granted at the sole discretion of Siddiqui Bro LLC in cases of documented non-delivery.
             </p>
           </div>
 
@@ -135,7 +133,7 @@ export const AgreementViewer: React.FC<AgreementViewerProps> = ({
           <div>
             <h4 className="font-bold text-text-primary mb-1 uppercase tracking-wide">9. INTELLECTUAL PROPERTY</h4>
             <p>
-              Upon full payment, the Client owns all deliverables created specifically for them. The 
+              Upon service activation, the Client owns all deliverables created specifically for them. The 
               Company retains the right to use anonymized work samples for portfolio and marketing 
               purposes unless the Client opts out in writing.
             </p>
@@ -146,8 +144,8 @@ export const AgreementViewer: React.FC<AgreementViewerProps> = ({
             <p>
               The Company does not guarantee employment outcomes. Career services improve the 
               quality of Client materials and processes; however, hiring decisions remain at the discretion 
-              of employers. The Company's total liability shall not exceed the total fees paid by the Client 
-              under this Agreement.
+              of employers. The Company's total liability shall not exceed the value of the services 
+              rendered under this Agreement.
             </p>
           </div>
 

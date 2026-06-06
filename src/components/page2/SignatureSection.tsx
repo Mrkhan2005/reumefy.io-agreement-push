@@ -258,14 +258,14 @@ export const SignatureSection: React.FC<SignatureSectionProps> = ({
               />
               <label htmlFor="agree-check" className="text-xs text-text-muted leading-relaxed cursor-pointer select-none">
                 I have read, understood, and agree to be bound by all the terms and conditions outlined in the{' '}
-                <span className="text-accent-gold font-semibold">Resumefy.io Client Services Agreement</span>.
+                <span className="text-accent-gold font-semibold">Siddiqui Bro LLC Client Services Agreement</span>.
               </label>
             </div>
 
             {/* SIGN BUTTON */}
             <div className="pt-2">
               <GoldButton type="submit" fullWidth>
-                Sign Agreement & Continue to Payment →
+                Sign Agreement & Activate Services →
               </GoldButton>
             </div>
           </form>

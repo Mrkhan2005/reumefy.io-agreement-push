@@ -80,7 +80,7 @@ const OrderContext = createContext<OrderContextType | undefined>(undefined);
 
 export const OrderProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [services, setServices] = useState<ServiceSelection>(() => {
-    const saved = localStorage.getItem('resumefy_current_selection');
+    const saved = localStorage.getItem('siddiquibro_current_selection');
     return saved ? JSON.parse(saved) : defaultServices;
   });
 
@@ -102,7 +102,7 @@ export const OrderProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 
   // Persist selections
   useEffect(() => {
-    localStorage.setItem('resumefy_current_selection', JSON.stringify(services));
+    localStorage.setItem('siddiquibro_current_selection', JSON.stringify(services));
   }, [services]);
 
   // Pricing calculations
@@ -273,13 +273,13 @@ export const OrderProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     };
 
     // Load existing agreements
-    const existingStr = localStorage.getItem('resumefy_agreements');
+    const existingStr = localStorage.getItem('siddiquibro_agreements');
     const existing: AgreementData[] = existingStr ? JSON.parse(existingStr) : [];
     existing.push(agreementRecord);
-    localStorage.setItem('resumefy_agreements', JSON.stringify(existing));
+    localStorage.setItem('siddiquibro_agreements', JSON.stringify(existing));
 
     // Optional: Stream to Google Sheets Webhook if configured
-    const gsheetWebhook = localStorage.getItem('resumefy_gsheet_webhook');
+    const gsheetWebhook = localStorage.getItem('siddiquibro_gsheet_webhook');
     if (gsheetWebhook) {
       fetch(gsheetWebhook, {
         method: 'POST',

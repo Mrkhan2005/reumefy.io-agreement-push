@@ -11,7 +11,7 @@ interface PaymentSectionProps {
 type PaymentMethod = 'stripe' | 'bank' | 'paypal' | 'whatsapp';
 
 export const PaymentSection: React.FC<PaymentSectionProps> = ({ visible }) => {
-  const { orderDetails, resetOrder } = useOrder();
+  const { resetOrder } = useOrder();
   const [selectedMethod, setSelectedMethod] = useState<PaymentMethod>('bank');
   const [paymentSubmitted, setPaymentSubmitted] = useState(false);
 
@@ -42,18 +42,18 @@ export const PaymentSection: React.FC<PaymentSectionProps> = ({ visible }) => {
     },
     {
       id: 'bank' as PaymentMethod,
-      name: 'Bank Transfer',
+      name: 'Email Confirmation',
       icon: <Landmark size={18} />,
       badge: 'Recommended',
-      description: 'Transfer directly to our corporate accounts.',
+      description: 'Receive onboarding details and setup instructions via email.',
       disabled: false,
     },
     {
       id: 'paypal' as PaymentMethod,
-      name: 'PayPal Checkout',
+      name: 'PayPal Confirmation',
       icon: <DollarSign size={18} />,
       badge: null,
-      description: 'Instant verification via secure PayPal link.',
+      description: 'Request PayPal onboarding links to be sent via email.',
       disabled: false,
     },
     {
@@ -61,7 +61,7 @@ export const PaymentSection: React.FC<PaymentSectionProps> = ({ visible }) => {
       name: 'WhatsApp Business',
       icon: <MessageSquare size={18} />,
       badge: 'Popular',
-      description: 'Arrange invoice/terms with our sales team via WhatsApp.',
+      description: 'Coordinate onboarding and activation details via WhatsApp.',
       disabled: false,
     },
   ];
@@ -75,15 +75,15 @@ export const PaymentSection: React.FC<PaymentSectionProps> = ({ visible }) => {
         
         <div className="space-y-2">
           <h3 className="font-display text-2xl font-bold text-text-primary">
-            Checkout Instructions Sent
+            Activation Request Submitted
           </h3>
           <p className="text-sm text-text-muted max-w-md mx-auto leading-relaxed">
             {selectedMethod === 'bank' &&
-              'We have emailed you our corporate banking invoice with SWIFT/Routing details. Your application services will begin immediately upon transfer verification.'}
+              'We have sent confirmation and activation instructions to your email. Our team will verify your signed agreement and initiate services shortly.'}
             {selectedMethod === 'paypal' &&
-              'A secure PayPal transfer request has been sent to your email. Please fulfill it to unlock full service delivery.'}
+              'We have sent confirmation and activation instructions to your email. Our team will verify your signed agreement and initiate services shortly.'}
             {selectedMethod === 'whatsapp' &&
-              'Opening WhatsApp... A support agent will connect with you to review your contract details and customize your payment terms.'}
+              'Opening WhatsApp... A support agent will connect with you to review your contract details and coordinate service activation.'}
           </p>
         </div>
 
@@ -102,10 +102,10 @@ export const PaymentSection: React.FC<PaymentSectionProps> = ({ visible }) => {
       
       <div className="flex flex-col gap-1 border-b border-gold-border/10 pb-4 mb-6">
         <h3 className="font-display text-xl font-bold text-text-primary tracking-tight">
-          Complete Your Order
+          Activate Your Services
         </h3>
         <p className="text-xs text-text-muted">
-          Select your preferred payment method below to activate services.
+          Select your preferred onboarding/contact method below to finalize setup.
         </p>
       </div>
 
@@ -166,24 +166,24 @@ export const PaymentSection: React.FC<PaymentSectionProps> = ({ visible }) => {
           <div className="flex items-center gap-2.5 text-xs text-text-muted text-center sm:text-left">
             <ShieldCheck size={20} className="text-accent-gold" />
             <div>
-              <p className="font-semibold text-text-primary">Fully Secure 256-Bit SSL Checkout</p>
-              <p>Your payment details are fully encrypted and never stored on our servers.</p>
+              <p className="font-semibold text-text-primary">Secure Verification System</p>
+              <p>Your details are protected using industry-standard encryption protocols.</p>
             </div>
           </div>
           
           <div className="text-center sm:text-right shrink-0">
             <span className="text-[10px] text-text-muted uppercase tracking-widest font-bold block">
-              Total Payable
+              Contract Status
             </span>
-            <span className="text-2xl font-black text-accent-gold font-sans tracking-tight">
-              ${orderDetails.totalDueToday}
+            <span className="text-xl font-bold text-accent-gold font-sans tracking-tight">
+              Ready to Activate
             </span>
           </div>
         </div>
 
         <div>
           <GoldButton type="submit" fullWidth className="py-4">
-            Complete Payment →
+            Activate Services →
           </GoldButton>
         </div>
       </form>

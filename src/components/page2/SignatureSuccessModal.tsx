@@ -62,12 +62,12 @@ export const SignatureSuccessModal: React.FC<SignatureSuccessModalProps> = ({
     doc.setTextColor(212, 175, 55); // Gold Accent (#D4AF37)
     doc.setFont('times', 'bold');
     doc.setFontSize(26);
-    doc.text('RESUMEFY.IO', 20, 25);
+    doc.text('SIDDIQUI BRO LLC', 20, 25);
     
     doc.setTextColor(248, 249, 250); // White
     doc.setFont('times', 'normal');
     doc.setFontSize(12);
-    doc.text('Your Career, Professionally Elevated.', 20, 34);
+    doc.text('Corporate and Client Services.', 20, 34);
 
     // Document Title
     doc.setTextColor(17, 24, 39); // Dark Gray
@@ -96,12 +96,12 @@ export const SignatureSuccessModal: React.FC<SignatureSuccessModalProps> = ({
     // Selected Services List
     doc.setFont('times', 'bold');
     doc.setFontSize(14);
-    doc.text('ITEMIZED ORDER DETAILS', 20, 128);
+    doc.text('SELECTED SERVICE DETAILS', 20, 128);
 
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(10);
-    doc.text('Service Item', 20, 136);
-    doc.text('Price (USD)', 160, 136);
+    doc.text('Selected Service Item', 20, 136);
+    doc.text('Status', 160, 136);
     doc.setDrawColor(212, 175, 55);
     doc.setLineWidth(0.5);
     doc.line(20, 138, 190, 138);
@@ -110,35 +110,35 @@ export const SignatureSuccessModal: React.FC<SignatureSuccessModalProps> = ({
     doc.setFont('helvetica', 'normal');
 
     // Add Complimentary Item
-    doc.text('ATS-Optimized Resume (Complimentary)', 20, currentY);
-    doc.text('$0.00', 160, currentY);
+    doc.text('ATS-Optimized Resume', 20, currentY);
+    doc.text('Active (Complimentary)', 160, currentY);
     currentY += 8;
 
     // Premium Items
     const services = orderDetails.services;
     if (services.assistedJobApps.selected) {
       doc.text(`Assisted Job Applications (${services.assistedJobApps.quantity} applications)`, 20, currentY);
-      doc.text(`$${services.assistedJobApps.quantity * 2}.00`, 160, currentY);
+      doc.text(`Active`, 160, currentY);
       currentY += 8;
     }
     if (services.careerConsultation.selected) {
-      doc.text('Career Consultation (Complimentary first 30m, $100/hr post-session)', 20, currentY);
-      doc.text('$0.00', 160, currentY);
+      doc.text('Career Consultation (Complimentary first 30m, hourly consulting post-session)', 20, currentY);
+      doc.text('Active', 160, currentY);
       currentY += 8;
     }
     if (services.interviewPrep.selected) {
       doc.text('Interview Preparation (STAR Coaching Session)', 20, currentY);
-      doc.text('$100.00', 160, currentY);
+      doc.text('Active', 160, currentY);
       currentY += 8;
     }
     if (services.profileOptimization.selected) {
       doc.text('Professional Profile Optimization (LinkedIn/Indeed)', 20, currentY);
-      doc.text('$60.00', 160, currentY);
+      doc.text('Active', 160, currentY);
       currentY += 8;
     }
     if (services.portfolioCreation.selected) {
       doc.text(`Portfolio Creation (${services.portfolioCreation.tier.toUpperCase()} Tier)`, 20, currentY);
-      doc.text(`$${services.portfolioCreation.tier === 'pdf' ? 50 : 200}.00`, 160, currentY);
+      doc.text('Active', 160, currentY);
       currentY += 8;
     }
 
@@ -147,10 +147,10 @@ export const SignatureSuccessModal: React.FC<SignatureSuccessModalProps> = ({
     currentY += 8;
 
     doc.setFont('helvetica', 'bold');
-    doc.text('TOTAL DUE TODAY:', 20, currentY);
+    doc.text('SERVICE INITIATION STATUS:', 20, currentY);
     doc.setTextColor(212, 175, 55);
-    doc.setFontSize(12);
-    doc.text(`$${orderDetails.totalDueToday}.00`, 160, currentY);
+    doc.setFontSize(10);
+    doc.text('Agreement Signed & Ready', 140, currentY);
     doc.setTextColor(17, 24, 39);
     doc.setFontSize(10);
 
@@ -178,7 +178,7 @@ export const SignatureSuccessModal: React.FC<SignatureSuccessModalProps> = ({
     doc.setTextColor(17, 24, 39);
     doc.setFontSize(10);
     doc.setFont('helvetica', 'bold');
-    doc.text('For Resumefy.io Team', 20, currentY);
+    doc.text('For Siddiqui Bro LLC Team', 20, currentY);
     doc.text('For Client (Digital Authorization)', 115, currentY);
 
     currentY += 5;
@@ -200,7 +200,7 @@ export const SignatureSuccessModal: React.FC<SignatureSuccessModalProps> = ({
       doc.text(typedSignature, 120, currentY - 10);
     }
 
-    doc.save(`Resumefy_Agreement_${referenceNumber}.pdf`);
+    doc.save(`Siddiqui_Bro_LLC_Agreement_${referenceNumber}.pdf`);
   };
 
   return (
@@ -281,12 +281,12 @@ export const SignatureSuccessModal: React.FC<SignatureSuccessModalProps> = ({
             <Download size={14} className="ml-1" />
           </button>
 
-          {/* PROCEED TO PAYMENT */}
+          {/* PROCEED TO ACTIVATION */}
           <button
             onClick={onProceedToPayment}
             className="w-full flex items-center justify-center gap-2 py-3.5 px-4 rounded-lg gold-btn-gradient text-bg-primary font-bold text-sm transition-all duration-200 cursor-pointer border border-accent-gold-light/20"
           >
-            Proceed to Payment
+            Activate Services
             <ArrowRight size={16} />
           </button>
         </div>

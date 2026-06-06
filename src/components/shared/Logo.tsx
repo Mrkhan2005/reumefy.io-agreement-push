@@ -14,9 +14,8 @@ export const Logo: React.FC<LogoProps> = ({ className = '', size = 'md' }) => {
 
   return (
     <div className={`font-display font-bold tracking-tight text-text-primary flex items-center ${sizeClasses[size]} ${className}`}>
-      <span>Resumefy</span>
-      <span className="text-accent-gold font-sans font-black">.</span>
-      <span className="text-sm font-sans font-semibold text-text-muted mt-1.5 ml-0.5 tracking-normal">io</span>
+      <span>Siddiqui Bro</span>
+      <span className="text-accent-gold font-sans font-black ml-1">LLC</span>
     </div>
   );
 };
