@@ -39,7 +39,7 @@ const PORT = process.env.PORT || 8080; // Hostinger sets process.env.PORT dynami
 app.use(express.static(path.join(__dirname, 'dist')));
 
 // Fallback all routes to index.html to support React routing (hash or clean routes)
-app.get('*', (req, res) => {
+app.get('/*splat', (req, res) => {
   res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
 
