@@ -8,6 +8,23 @@ export const Navbar: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
+  const handleNavClick = (sectionId: string) => {
+    if (location.pathname !== '/') {
+      navigate('/');
+      setTimeout(() => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 150);
+    } else {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+  };
+
   const handleLogoClick = (e: React.MouseEvent) => {
     e.preventDefault();
     resetOrder();
@@ -23,15 +40,15 @@ export const Navbar: React.FC = () => {
         
         <div className="flex items-center gap-6">
           <div className="hidden sm:flex items-center gap-6 text-xs uppercase tracking-widest font-semibold text-text-muted">
-            <span className="hover:text-accent-gold transition-colors cursor-pointer">Services</span>
-            <span className="hover:text-accent-gold transition-colors cursor-pointer">How it Works</span>
-            <span className="hover:text-accent-gold transition-colors cursor-pointer">Pricing</span>
-            <span className="hover:text-accent-gold transition-colors cursor-pointer">Compliance</span>
+            <span onClick={() => handleNavClick('services')} className="hover:text-accent-gold transition-colors cursor-pointer">Services</span>
+            <span onClick={() => handleNavClick('signup')} className="hover:text-accent-gold transition-colors cursor-pointer">How it Works</span>
+            <span onClick={() => handleNavClick('why-us')} className="hover:text-accent-gold transition-colors cursor-pointer">Why Us</span>
+            <span onClick={() => handleNavClick('compliance')} className="hover:text-accent-gold transition-colors cursor-pointer">Compliance</span>
           </div>
           
           {location.pathname === '/agreement' && (
             <button
-              onClick={() => navigate('/')}
+              onClick={() => navigate('/portal')}
               className="text-xs font-bold uppercase tracking-wider text-accent-gold border border-accent-gold/45 hover:bg-accent-gold/10 hover:border-accent-gold px-4 py-2 rounded-lg transition-all cursor-pointer shadow-[0_0_10px_rgba(212,175,55,0.1)] hover:shadow-[0_0_15px_rgba(212,175,55,0.2)]"
             >
               ← Edit Services

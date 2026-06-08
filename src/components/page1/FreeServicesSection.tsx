@@ -41,9 +41,9 @@ export const FreeServicesSection: React.FC = () => {
             </div>
             
             <div className="text-left sm:text-right shrink-0">
-              <span className="text-sm text-text-muted line-through">$150</span>
-              <div className="text-2xl font-extrabold text-accent-gold-light">$0</div>
-              <span className="text-[10px] text-text-muted uppercase tracking-wider font-semibold">Complimentary</span>
+              <span className="bg-accent-gold/15 text-accent-gold border border-accent-gold/20 text-[10px] uppercase font-bold tracking-wider px-3 py-1 rounded">
+                Complimentary
+              </span>
             </div>
           </div>
 

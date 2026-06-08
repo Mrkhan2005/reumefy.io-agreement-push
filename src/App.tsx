@@ -2,6 +2,7 @@ import React from 'react';
 import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { OrderProvider } from './context/OrderContext';
 import ServicesPage from './pages/ServicesPage';
+import LandingPage from './pages/LandingPage';
 import AgreementPage from './pages/AgreementPage';
 import AdminDashboard from './pages/AdminDashboard';
 
@@ -39,7 +40,8 @@ export const App: React.FC = () => {
           {/* Core Content */}
           <div className="relative z-10 w-full min-h-screen">
             <Routes>
-              <Route path="/" element={<ServicesPage />} />
+              <Route path="/" element={<LandingPage />} />
+              <Route path="/portal" element={<ServicesPage />} />
               <Route path="/agreement" element={<AgreementPage />} />
               <Route path="/admin" element={<AdminDashboard />} />
               <Route path="*" element={<Navigate to="/" replace />} />

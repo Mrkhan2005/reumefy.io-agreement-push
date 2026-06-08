@@ -30,7 +30,7 @@ export const AgreementPage: React.FC = () => {
 
   useEffect(() => {
     if (!hasItems) {
-      navigate('/');
+      navigate('/portal');
     }
   }, [hasItems, navigate]);
 
